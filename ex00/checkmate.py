@@ -40,6 +40,9 @@ class Game :
 
 
     def check(self, king) :
+
+        allSta = False
+
         for i in range(self.num) :
             for j in range(self.num) :
                 txt = self.board[i][j]
@@ -51,12 +54,13 @@ class Game :
                     for k in x :
                         if k == king :
                             print("Success")
+                            allSta = True
                 
                 # if txt == "B" :
                     # print("found Bishop at", pos)
                     # change to def
 
-                if txt == "R" :
+                elif txt == "R" :
                     print("found Rook at", pos)
                     self.check_rook(pos, self.num)
                     # change to def
@@ -64,6 +68,14 @@ class Game :
                 # if txt == "Q" :
                     # print("found Queen at", pos)
                     # change to def
+                
+                if allSta :
+                    break
+            
+            if allSta :
+                break
+            print("row")
+
     
 
 
@@ -110,7 +122,6 @@ def posKing(board) :
                 return i, j
 
 def checkmate(board):
-
     try :
         check_b = check_board(board)
         if check_b :
@@ -119,7 +130,7 @@ def checkmate(board):
             posK = [pos_Kx, pos_Ky]
             print("King is", posK )
             myGame = Game(board.split(), posK, len(board.split()))
-            myGame.check(posK)
+            sta = myGame.check(posK)
         
         else :
             print("ERROR")
