@@ -1,57 +1,43 @@
-"""#!/usr/bin/env python3
-def cou(b) :
-    x = len(b)
-    n = 0
-    for i in range(1,9) :
-        if (i*i + i - 1) == x :
-            n = i
-    return n
+#!/usr/bin/env python3
 
-def toTable(b, n) :
-    table = [[] for _ in range(n)]
-    x = 0
-    b =  b.replace("\n","")
+from checkmate import checkmate 
 
-    for i in range(n) :
-        for j in range(n) :
-            table[i].append(b[x])
-            x += 1
-    return table
+def check_board(board):
+    sta = True
+    staKing = False
+    b = board.split()
+    n = len(b)
 
+    for i in range(n):
+        for j in range(n):
+            txt = b[i][j]
 
+            if txt not in [".","K", "Q", "P", "R", "B"] :
+                print("WHO ARE YOU")
+                sta = False
+            
+            if "K" == txt:
+                staKing = True            
+    
+    for i in b :
+        if len(i) != n :
+            print("Eiwwwwwww not Table")
+            sta = False
+    
+    if not staKing :
+        print("WHERE ARE KING")
 
-def checkmate(board) :
-    n = cou(board)
-    x = toTable(board,n)
-
-    for i in range(n) :
-        for j in range(n) :
-            print(x[i][j])
-
-
-
-def main() :
-    board = \
-R..
-..k
-...\
-
-    checkmate(board)
-
-
-if __name__ == "__main__" :
-    main()
-
-"""
-import math
-
+        
 def main():
-board = """\
-R...
-.K..
-..P.
-....\
-"""
+    board = """\
+    R...
+    .N..
+    ..P.
+    ....\
+    """
+    check_board(board)
+    # checkmate(board)
 
 if __name__ == "__main__":
+    main()
 
