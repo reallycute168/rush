@@ -9,13 +9,11 @@ class Game :
 
     def check_pawn(self, pos, num) :
         if pos[0] != 0 and pos[1] == 0 :
-            # print("check", pos[0] - 1, pos[1] + 1)
             return [[pos[0]-1, pos[1]+1]]
             
         elif pos[0] != 0 and pos[1] == num - 1 :
             return [[pos[0]-1, pos[1]+1]]
         else :
-            # print("pawn check", pos[0] - 1, pos[1] - 1, "and", pos[0] - 1, pos[1] + 1 )
             return [ [pos[0]-1, pos[1]+1], [pos[0]-1, pos[1]-1] ]
 
     
@@ -25,14 +23,13 @@ class Game :
 
     def check_rook(self, pos, num) :
         r = []
-        print("rook check ", end=" ")
         for i in range(num) :
             for j in range(num) :
                 if i == pos[0] and j == pos[1] :
                     pass
                 if i == pos[0] or j == pos[1] :
-                    print(i, j, end=", ")
-
+                    r.append([i, j])
+        return r
     
     def check_queen(pos) :
         pass
@@ -61,8 +58,12 @@ class Game :
                     # change to def
 
                 elif txt == "R" :
-                    print("found Rook at", pos)
-                    self.check_rook(pos, self.num)
+                    x = self.check_rook(pos, self.num)
+                    for k in x :
+                        if k == king :
+                            print("Success")
+                            allSta = True
+
                     # change to def
 
                 # if txt == "Q" :
@@ -74,7 +75,6 @@ class Game :
             
             if allSta :
                 break
-            print("row")
 
     
 
