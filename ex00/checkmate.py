@@ -17,9 +17,16 @@ class Game :
             return [ [pos[0]-1, pos[1]+1], [pos[0]-1, pos[1]-1] ]
 
     
-    def check_bishop(pos) :
-        pass
+    def check_bishop(self, pos, num) :
+        b = []
+        n1 = num - pos[0]
+        for i in range(0, n1 - 1) :
+            b.append([i, pos[0] + i])
+            
 
+        # for i in range(n1, num) :
+        #     b.append([i, pos[1]])
+        print(b)
 
     def check_rook(self, pos, num) :
         r = []
@@ -47,24 +54,40 @@ class Game :
                 pos = [i, j]
 
                 if txt == "P" :
-                    x = self.check_pawn(pos, self.num)
-                    for k in x :
-                        if k == king :
-                            print("Success")
-                            allSta = True
+                    # x = self.check_pawn(pos, self.num)
+                    # for k in x :
+                    #     if k == king :
+                    #         print("Success")
+                    #         allSta = True
+
+                    if pos[0] > 0 and (  (pos[1] - 1) == king[1] and (pos[0]-1) == king[0]  or (pos[1] + 1) == king[1] and (pos[0]-1) == king[0]   ) :
+                        print("check")
+                    else :
+                        print("no")
                 
-                # if txt == "B" :
-                    # print("found Bishop at", pos)
-                    # change to def
+                if txt == "B" :
+                    # x = self.check_bishop(pos, self.num)
+                    # self.check_bishop(pos, self.num)
+                    a = pos[0] - king[0]
+                    b = pos[1] - king[1]
+                    if a == b :
+                        print("check")
+                    else :
+                        print("no")
+
 
                 elif txt == "R" :
-                    x = self.check_rook(pos, self.num)
-                    for k in x :
-                        if k == king :
-                            print("Success")
-                            allSta = True
+                    # x = self.check_rook(pos, self.num)
+                    # for k in x :
+                    #     if k == king :
+                    #         print("Success")
+                    #         allSta = True
+                    if pos[0] == king[0] or pos[1] == king[1] :
+                        print("check")
+                    else :
+                        print("no")
 
-                    # change to def
+
 
                 # if txt == "Q" :
                     # print("found Queen at", pos)

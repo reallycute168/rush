@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
 
-from checkmate import checkmate 
+from newcheckmate import checkboard, checkmate
 # from checkmate import Pos_K
 
 def main():
     board = """\
 .......
-...K...
-....P..
 .......
-.......
-.......
+......P
+...B...
+.....R.
+.....K.
 .......\
     """
-    checkmate(board)
+    if checkboard(board) :
+        checkmate(board)
 
 if __name__ == "__main__":
     main()
