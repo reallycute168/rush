@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from checkmate import checkmate 
+from checkmate import Pos_K
 
 def check_board(board):
     sta = True
