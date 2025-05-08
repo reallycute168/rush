@@ -1,11 +1,10 @@
-#!/usr/bin/env python3
+"""#!/usr/bin/env python3
 def cou(b) :
     x = len(b)
     n = 0
     for i in range(1,9) :
         if (i*i + i - 1) == x :
             n = i
-    print(n)
     return n
 
 def toTable(b, n) :
@@ -17,29 +16,31 @@ def toTable(b, n) :
         for j in range(n) :
             table[i].append(b[x])
             x += 1
-    print(table)
+    return table
 
 
 
 def checkmate(board) :
     n = cou(board)
-    toTable(board,n)
+    x = toTable(board,n)
 
-    # for i in range(n) :
-    #     for j in range(n) :
+    for i in range(n) :
+        for j in range(n) :
+            print(x[i][j])
 
 
 
 def main() :
-    board = """\
-R...
-.K..
-..P.
-....\
-"""
+    board = \
+R..
+..k
+...\
+
     checkmate(board)
 
 
 if __name__ == "__main__" :
     main()
+
+"""
 
