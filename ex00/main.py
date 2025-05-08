@@ -5,10 +5,13 @@ from checkmate import checkmate
 
 def main():
     board = """\
-    R...
-    ..K.
-    ..P.
-    ....\
+.......
+Q.....P
+.......
+...P.R.
+.B.....
+.....K.
+.......\
     """
     checkmate(board)
 

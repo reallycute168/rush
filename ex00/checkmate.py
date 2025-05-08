@@ -7,16 +7,30 @@ class Game :
         self.num = num
 
 
-    def check_pawn(pos) :
-        pass
+    def check_pawn(self, pos, num) :
+        if pos[0] != 0 and pos[1] == 0 :
+            print("check", pos[0] - 1, pos[1] + 1)
+            
+        elif pos[0] != 0 and pos[1] == num - 1 :
+            print("pawn check", pos[0] - 1, pos[1] - 1)
+        else :
+            print("pawn check", pos[0] - 1, pos[1] - 1, "and", pos[0] - 1, pos[1] + 1 )
+
 
     
     def check_bishop(pos) :
         pass
 
 
-    def check_rook(pos) :
-        pass
+    def check_rook(self, pos, num) :
+        r = []
+        print("rook check ", end=" ")
+        for i in range(num) :
+            for j in range(num) :
+                if i == pos[0] and j == pos[1] :
+                    pass
+                if i == pos[0] or j == pos[1] :
+                    print(i, j, end=", ")
 
     
     def check_queen(pos) :
@@ -32,23 +46,22 @@ class Game :
                 pos = [i, j]
 
                 if txt == "P" :
-                    print("found Pawn at", pos)
-                    # change to def
+                    # print("found Pawn at", pos)
+                    self.check_pawn(pos, self.num)
                 
-                if txt == "B" :
-                    print("found Bishop at", pos)
+                # if txt == "B" :
+                    # print("found Bishop at", pos)
                     # change to def
 
                 if txt == "R" :
                     print("found Rook at", pos)
+                    self.check_rook(pos, self.num)
                     # change to def
 
-                if txt == "Q" :
-                    print("found Queen at", pos)
+                # if txt == "Q" :
+                    # print("found Queen at", pos)
                     # change to def
     
-
-
 
 
 def check_board(board):
