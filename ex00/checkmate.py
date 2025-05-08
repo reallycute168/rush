@@ -26,14 +26,29 @@ def check_board(board):
 
 
 def checkmate():
-    pass
+    if Pos_K == Enemy :
+        print("Success")
+    else :
+        print("Fail")
+
+
+board = """
+R...
+.N..
+.P..
+....
+"""
 
 def Pos_K(board):
+    '''tingwaidevwtom'''
     b = board.split()
     n = len(b)
     for row in range(n):
-        for col in range(n):
-            if board[row][col] == "K" :
-                king_pos = int(row,col)
+        for col in range(len(b[row])):
+            if b[row][col] == "K" :
+                king_pos = (row,col)
                 print(king_pos)
+                return king_pos
+
 print(Pos_K)
+
