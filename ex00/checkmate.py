@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 def check_board(board):
     sta = True
     staKing = False
@@ -12,43 +13,39 @@ def check_board(board):
             if txt not in [".","K", "Q", "P", "R", "B"] :
                 print("WHO ARE YOU")
                 sta = False
-            
+
             if "K" == txt:
-                staKing = True            
-    
+                staKing = True 
     for i in b :
         if len(i) != n :
             print("Eiwwwwwww not Table")
             sta = False
-    
+
     if not staKing :
         print("WHERE ARE KING")
+        sta = False
 
+    if sta :
+        print("Evrythinh is OK")
+        return True
+    else : 
+        return False
 
-def checkmate():
-    if Pos_K == Enemy :
-        print("Success")
-    else :
-        print("Fail")
+def posKing(board) :
+    n = len(board)
+    for i in range(n):
+        for j in range(n):
+            txt = board[i][j]
+            
+            if txt == "K" :
+                return i, j
 
+def checkmate(board):
 
-board = """
-R...
-.N..
-.P..
-....
-"""
+    check_b = check_board(board)
+    if check_b :
 
-def Pos_K(board):
-    '''tingwaidevwtom'''
-    b = board.split()
-    n = len(b)
-    for row in range(n):
-        for col in range(len(b[row])):
-            if b[row][col] == "K" :
-                king_pos = (row,col)
-                print(king_pos)
-                return king_pos
+        pos_Kx, pos_Ky = posKing(board.split())
+        print(pos_Kx, pos_Ky)
 
-print(Pos_K(board))
-
+# myGame = Game()
