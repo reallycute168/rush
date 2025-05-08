@@ -43,5 +43,15 @@ if __name__ == "__main__" :
     main()
 
 """
+import math
 
-print("Hi Brother")
+def main():
+board = """\
+R...
+.K..
+..P.
+....\
+"""
+
+if __name__ == "__main__":
+
