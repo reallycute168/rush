@@ -50,5 +50,5 @@ def Pos_K(board):
                 print(king_pos)
                 return king_pos
 
-print(Pos_K)
+print(Pos_K(board))
 
