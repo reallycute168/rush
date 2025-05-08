@@ -9,13 +9,14 @@ class Game :
 
     def check_pawn(self, pos, num) :
         if pos[0] != 0 and pos[1] == 0 :
-            print("check", pos[0] - 1, pos[1] + 1)
+            # print("check", pos[0] - 1, pos[1] + 1)
+            return [[pos[0]-1, pos[1]+1]]
             
         elif pos[0] != 0 and pos[1] == num - 1 :
-            print("pawn check", pos[0] - 1, pos[1] - 1)
+            return [[pos[0]-1, pos[1]+1]]
         else :
-            print("pawn check", pos[0] - 1, pos[1] - 1, "and", pos[0] - 1, pos[1] + 1 )
-
+            # print("pawn check", pos[0] - 1, pos[1] - 1, "and", pos[0] - 1, pos[1] + 1 )
+            return [ [pos[0]-1, pos[1]+1], [pos[0]-1, pos[1]-1] ]
 
     
     def check_bishop(pos) :
@@ -38,7 +39,7 @@ class Game :
     
 
 
-    def check(self) :
+    def check(self, king) :
         for i in range(self.num) :
             for j in range(self.num) :
                 txt = self.board[i][j]
@@ -46,8 +47,10 @@ class Game :
                 pos = [i, j]
 
                 if txt == "P" :
-                    # print("found Pawn at", pos)
-                    self.check_pawn(pos, self.num)
+                    x = self.check_pawn(pos, self.num)
+                    for k in x :
+                        if k == king :
+                            print("Success")
                 
                 # if txt == "B" :
                     # print("found Bishop at", pos)
@@ -67,6 +70,7 @@ class Game :
 def check_board(board):
     sta = True
     staKing = False
+    couKing = 0
     b = board.split()
     n = len(b)
 
@@ -79,6 +83,7 @@ def check_board(board):
                 sta = False
 
             if "K" == txt:
+                couKing += 1
                 staKing = True 
     for i in b :
         if len(i) != n :
@@ -89,7 +94,7 @@ def check_board(board):
         print("WHERE ARE KING")
         sta = False
 
-    if sta :
+    if sta and couKing == 1:
         print("Evrythinh is OK")
         return True
     else : 
@@ -106,12 +111,18 @@ def posKing(board) :
 
 def checkmate(board):
 
-    check_b = check_board(board)
-    if check_b :
+    try :
+        check_b = check_board(board)
+        if check_b :
 
-        pos_Kx, pos_Ky = posKing(board.split())
-        posK = [pos_Kx, pos_Ky]
-        print("King is", posK )
-        myGame = Game(board.split(), posK, len(board.split()))
-        myGame.check()
+            pos_Kx, pos_Ky = posKing(board.split())
+            posK = [pos_Kx, pos_Ky]
+            print("King is", posK )
+            myGame = Game(board.split(), posK, len(board.split()))
+            myGame.check(posK)
+        
+        else :
+            print("ERROR")
+    except :
+        print("ERROR")
 
