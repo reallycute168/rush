@@ -13,7 +13,9 @@ def checkboard(board) :
         for col in row :
             if col in count : count[col] += 1
             elif col != "." : print("Table ERROR \nonly K Q B R P and .")
-    
+    if not count["K"] :
+        print("Where are King?")
+        return False
     if count["K"] > 1 : 
         print("K must have only 1") 
         return False
@@ -48,7 +50,7 @@ def checkmate(board) :
 
     #pawn
     if posKing[0] < n-1 and (mBoard[kx+1][ky+1] == "P" or mBoard[kx+1][ky-1] == "P"):
-        print("Success")
+        print("Success \n(checkmate by P)")
         return
 
     #bishop
@@ -61,7 +63,7 @@ def checkmate(board) :
             if  not ( 0 <= x < n and 0 <= y < n ):
                 break
             elif mBoard[x][y] == "B" :
-                print("Success")
+                print("Success \n(checkmate by B)")
                 return
             elif mBoard[x][y] != "." :
                 break
@@ -76,7 +78,7 @@ def checkmate(board) :
             if  not ( 0 <= x < n and 0 <= y < n ):
                 break
             elif mBoard[x][y] == "R" :
-                print("Success")
+                print("Success \n(checkmate by R)")
                 return
             elif mBoard[x][y] != "." :
                 break
@@ -91,7 +93,7 @@ def checkmate(board) :
             if  not ( 0 <= x < n and 0 <= y < n ):
                 break
             elif mBoard[x][y] == "Q" :
-                print("Success")
+                print("Success \n(checkmate by Q)")
                 return
             elif mBoard[x][y] != "." :
                 break
