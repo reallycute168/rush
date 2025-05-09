@@ -88,7 +88,6 @@ class Game :
                         print("no")
 
 
-
                 # if txt == "Q" :
                     # print("found Queen at", pos)
                     # change to def
